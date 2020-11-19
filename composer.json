@@ -1,0 +1,36 @@
+{
+  "name": "sebrave/snapshot",
+  "description": "A package to render DB table snapshots to HTML",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sebastian Ravenscroft",
+      "email": "sebastian.ravenscroft@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "SebRave\\Snapshot\\": "src"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "SebRave\\Snapshot\\SnapshotServiceProvider"
+      ],
+      "aliases": {
+        "Snapshot": "SebRave\\Snapshot\\Facades\\Calculator"
+      }
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SebRave\\Snapshot\\Tests\\": "tests"
+    }
+  }
+}
