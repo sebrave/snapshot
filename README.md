@@ -5,11 +5,11 @@ Laravel DB table snapshot package
 
 ## Installation
 
-composer require sebrave/snapshot
+  composer require sebrave/snapshot
 
-composer update
+  composer update
 
-php artisan vendor:publish --provider="SebRave\\Snapshot\\SnapshotServiceProvider"
+  php artisan vendor:publish --provider="SebRave\\Snapshot\\SnapshotServiceProvider"
 
 
 ## Setup
@@ -19,7 +19,10 @@ Adjust settings in config/snapshot.php
 
 ## Usage
 
-app('snapshot')->show(MyClass::class);
+  app('snapshot')->show(MyClass::class);      
+
+Where MyClass::class is an Eloquent model
+
 
 A snapshot of the table is output in the root directory:
 
