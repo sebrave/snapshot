@@ -5,7 +5,6 @@ namespace SebRave\Snapshot;
 
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 
 class Snapshot
@@ -18,7 +17,7 @@ class Snapshot
 
         $filename = 'snapshot_' . strtolower($parts[count($parts) - 1]);
 
-        File::put('public/' . $filename . '.html',
+        File::put(config('snapshot.output_folder') . $filename . '.html',
             view('snapshot::data/snapshot')
                 ->with([
                     'timestamp' => Carbon::parse(now()),
@@ -28,6 +27,8 @@ class Snapshot
                 ->render()
         );
 
-        dump(env('APP_URL') . '/' . $filename . '.html');
+        if (config('snapshot.dump_snapshot_link')) {
+            dump(env('APP_URL') . '/' . $filename . '.html');
+        }
     }
 }

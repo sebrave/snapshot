@@ -1,5 +1,6 @@
 <head>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Snapshot of {{ $name }} table</title>
 </head>
 
 <div style="display: flex; align-content: center; justify-content: space-between;" class="p-5">
@@ -20,12 +21,7 @@
         @foreach ($data as $model)
             <tr class="border-b bg-gray-100">
                 @foreach ($model->toArray() as $value)
-                    @if (gettype($value) === 'integer')
-                        <td class="p-3 px-5 text-sm text-blue-700">{{ $value }}</td>
-                    @endif
-                    @if (gettype($value) === 'string')
-                        <td class="p-3 px-5 text-sm">{{ $value }}</td>
-                    @endif
+                    <td class="p-3 px-5 text-sm">{{ $value }}</td>
                 @endforeach
             </tr>
         @endforeach
