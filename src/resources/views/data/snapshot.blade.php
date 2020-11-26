@@ -21,7 +21,11 @@
         @foreach ($data as $model)
             <tr class="border-b bg-gray-100">
                 @foreach ($model->toArray() as $value)
-                    <td class="p-3 px-5 text-sm">{{ $value }}</td>
+                    @if (is_string($value) || is_numeric($value))
+                        <td class="p-3 px-5 text-sm">{{ $value }}</td>
+                    @else
+                        <td class="p-3 px-5 text-sm">{{ json_encode($value) }}</td>
+                    @endif
                 @endforeach
             </tr>
         @endforeach

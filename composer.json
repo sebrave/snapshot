@@ -9,7 +9,9 @@
       "email": "sebastian.ravenscroft@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "ext-json": "*"
+  },
   "autoload": {
     "psr-4": {
       "SebRave\\Snapshot\\": "src"
