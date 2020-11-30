@@ -5,13 +5,22 @@ namespace SebRave\Snapshot;
 
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class Snapshot
 {
     public function show(string $modelName)
     {
-        $data = (new $modelName())::query()->get();
+        if (class_exists($modelName)) {
+            $data = (new $modelName())::query()->get()
+                ->map(function (Model $model) {
+                    return $model->toArray();
+                });
+        } else {
+            $data = DB::table($modelName)->get();
+        }
 
         $parts = explode("\\", $modelName);
 

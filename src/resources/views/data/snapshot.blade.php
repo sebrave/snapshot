@@ -12,7 +12,7 @@
     <table style="width:auto" class="w-full text-md bg-white shadow-md rounded mb-4 overflow-x-scroll">
         <thead>
         <tr class="border-b">
-            @foreach ($data->first()->toArray() as $key => $value)
+            @foreach ($data->first() as $key => $value)
                 <td class="text-left p-3 px-5 text-sm"><b>{{ $key }}</b></td>
             @endforeach
         </tr>
@@ -20,7 +20,7 @@
         <tbody>
         @foreach ($data as $model)
             <tr class="border-b bg-gray-100">
-                @foreach ($model->toArray() as $value)
+                @foreach ($model as $value)
                     @if (is_string($value) || is_numeric($value))
                         <td class="p-3 px-5 text-sm">{{ $value }}</td>
                     @else
