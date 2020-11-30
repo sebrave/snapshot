@@ -30,3 +30,7 @@ Where mytable is a table in your SQL database
 A snapshot of the table is output in the root directory:
 
 snapshot_myclass.html
+
+Quick chart:
+
+> app('snapshot')->draw('mytable', 'column_x_name', 'column_y_name');
