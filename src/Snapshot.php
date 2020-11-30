@@ -53,7 +53,6 @@ class Snapshot
                         "y" => $model[$columnY]
                     ];
                 });
-            dump($data);
         } else {
             $data = DB::table($modelName)
                 ->orderBy($columnX)
