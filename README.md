@@ -19,7 +19,9 @@ Adjust settings in config/snapshot.php
 
 ## Usage
 
-> app('snapshot')->show(MyClass::class);      
+> app('snapshot')->show(MyClass::class);  
+
+> app('snapshot')->show([MyClass::class, AnotherClass::class]);      
 
 Where MyClass::class is an Eloquent model
 
