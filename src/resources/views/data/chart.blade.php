@@ -12,7 +12,11 @@
 </div>
 
 <div class="px-3 py-4" style="width: 60%; min-width: 600px;">
-    <canvas id="myChart" height="400"></canvas>
+    @if (count(json_decode($data)) > 0)
+        <canvas id="myChart" height="400"></canvas>
+    @else
+        <p>This table is empty</p>
+    @endif
 </div>
 
 

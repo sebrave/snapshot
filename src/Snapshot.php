@@ -6,32 +6,46 @@ namespace SebRave\Snapshot;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class Snapshot
 {
-    public function show(string $modelName)
+    public function show($modelName)
     {
-        if (class_exists($modelName)) {
-            $data = (new $modelName())::query()->get()
-                ->map(function (Model $model) {
-                    return $model->toArray();
-                });
+        $tables = Collection::wrap($modelName)
+            ->unique()
+            ->sort()
+            ->map(function (string $name) {
+                if (class_exists($name)) {
+                    $data = (new $name())::query()->get()
+                        ->map(function (Model $model) {
+                            return $model->toArray();
+                        });
+                } else {
+                    $data = DB::table($name)->get();
+                }
+
+                return [
+                    'name' => $name,
+                    'shortName' => collect(explode("\\", $name))->last(),
+                    'data' => $data
+                ];
+            });
+
+        if (is_string($modelName)) {
+            $parts = explode("\\", $modelName);
+            $filename = 'snapshot_' . strtolower($parts[count($parts) - 1]);
         } else {
-            $data = DB::table($modelName)->get();
+            $filename = 'snapshot_multiple_tables';
         }
-
-        $parts = explode("\\", $modelName);
-
-        $filename = 'snapshot_' . strtolower($parts[count($parts) - 1]);
 
         File::put(config('snapshot.output_folder') . $filename . '.html',
             view('snapshot::data/snapshot')
                 ->with([
                     'timestamp' => Carbon::parse(now()),
-                    'name' => $modelName,
-                    'data' => $data
+                    'tables' => $tables
                 ])
                 ->render()
         );
