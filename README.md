@@ -36,3 +36,13 @@ snapshot_myclass.html
 Quick chart:
 
 > app('snapshot')->draw('mytable', 'column_x_name', 'column_y_name');
+
+## Example output
+
+Here is an example of a database snapshot showing a 'courses' table:
+
+![Example snapshot](./docs/images/snapshot-example.png)
+
+Here is an example of a quick chart comparing two columns of the 'courses' table:
+
+![Example chart](./docs/images/chart-example.png)
