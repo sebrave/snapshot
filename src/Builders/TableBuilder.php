@@ -14,9 +14,9 @@ class TableBuilder extends OutputBuilder
 {
     public function build($userSelection)
     {
-        $filename = $this->getFilename($userSelection);
+        $filename = self::getFilename($userSelection);
 
-        $output = $this->render(
+        $output = self::render(
             $this->fetchTableData($userSelection)
         );
 
@@ -55,7 +55,7 @@ class TableBuilder extends OutputBuilder
      * @param $userSelection
      * @return string
      */
-    private function getFilename($userSelection): string
+    public static function getFilename($userSelection): string
     {
         if (is_string($userSelection)) {
             $parts = explode("\\", $userSelection);
@@ -69,7 +69,7 @@ class TableBuilder extends OutputBuilder
      * @param Collection $tableData
      * @return string
      */
-    public function render(Collection $tableData): string
+    public static function render(Collection $tableData): string
     {
         return view('snapshot::data/snapshot')
             ->with([

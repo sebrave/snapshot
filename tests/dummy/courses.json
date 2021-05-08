@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Terrance Ritchie Sr.",
+    "description": "Aspernatur et aut incidunt et rerum ea.",
+    "rating_percentage": 51,
+    "author": "Alexandrea Wunsch",
+    "category": "Eda Schuppe I",
+    "difficulty": "0",
+    "created_at": "2021-05-08T05:31:31.000000Z",
+    "updated_at": "2021-05-08T05:31:31.000000Z"
+  },
+  {
+    "id": 248,
+    "name": "Mr. Tom Parker",
+    "description": "Et fuga fugiat atque facere architecto soluta.",
+    "rating_percentage": 45,
+    "author": "Manuel Reilly",
+    "category": "Dessie Rosenbaum",
+    "difficulty": "2",
+    "created_at": "2021-05-08T05:31:31.000000Z",
+    "updated_at": "2021-05-08T05:31:31.000000Z"
+  }
+]
