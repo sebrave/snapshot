@@ -5,7 +5,6 @@ namespace SebRave\Snapshot\Tests\Feature;
 
 
 use Illuminate\Support\Str;
-use League\CommonMark\Extension\Table\TableRenderer;
 use SebRave\Snapshot\Builders\TableBuilder;
 use SebRave\Snapshot\Snapshot;
 use SebRave\Snapshot\Tests\dummy\Course;
